@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // Redirecciona al usuario a la ruta correcta
-        var path = window.location.pathname;
-        if (path !== "/") {
-            window.location.replace("/EcommerceReact/#" + path);
+        // Obtiene la URL de la página anterior
+        var previousUrl = document.referrer;
+
+        // Si hay una URL de referencia (es decir, el usuario no está directamente en el sitio web)
+        if (previousUrl) {
+            // Redirige a la página anterior
+            window.location.replace(previousUrl);
+        } else {
+            // Si no hay una URL de referencia, redirige a la página de inicio
+            window.location.replace("/EcommerceReact/");
         }
     </script>
 </head>
