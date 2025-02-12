@@ -5,6 +5,7 @@ import { UserProfileEdit } from "./UserProfileEdit";
 import { UserProfileView } from "./UserProfileView";
 import { useNavigate } from "react-router-dom";
 import { url } from "../../api/Axios";
+import axios from "axios";
 
 const UserProfile = () => {
   // Datos de ejemplo del usuario
@@ -28,7 +29,8 @@ const UserProfile = () => {
   // Función para obtener los detalles del producto desde la API
   const fetchProfile = async () => {
     try {
-      const response = await axiosInstance.get(`/User/profile`); // Hacer la solicitud GET
+      console.log(localStorage.getItem("token"))
+      const response = await axiosInstance.get("/User/profile"); // Hacer la solicitud GET
       setIsCustomer(response.data["roles"].some(role => role === "Customer"));
       setUser(response.data); // Guardar los detalles del producto en el estado
       console.log(response.data)
@@ -47,7 +49,11 @@ const UserProfile = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axiosInstance.get(`/Product/myproducts`); // Hacer la solicitud GET
+      const response = await axiosInstance.get(`/Product/myproducts`, {
+        headers : {
+          'Authorization' : `Bearer ${localStorage.getItem("token")}`
+        }
+      }); // Hacer la solicitud GET
       console.log(response.data)
       setMyProducts(response.data);
       setLoading(false); // Indicar que la carga ha terminado

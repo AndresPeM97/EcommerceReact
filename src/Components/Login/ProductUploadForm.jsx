@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Header } from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../api/Axios';
 
 const ProductUploadForm = () => {
   const [name, setName] = useState('');
@@ -31,7 +32,7 @@ const ProductUploadForm = () => {
     formData.append('imageFile', image);
 
     try {
-      const response = await axios.post('http://localhost:5006/api/Product', formData, {
+      const response = await axiosInstance.post('/Product', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem("token")}`

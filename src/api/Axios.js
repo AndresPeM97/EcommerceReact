@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const url = "http://localhost:5006"
+export const url = "https://app-250211201252.azurewebsites.net"
 
 const axiosInstance = axios.create({
   baseURL: `${url}/api`,
