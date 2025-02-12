@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <StrictMode>
-      <Router basename="/EcommerceReact">
+      <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
 
