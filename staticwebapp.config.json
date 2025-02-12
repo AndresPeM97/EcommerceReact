@@ -1,8 +1,8 @@
 {
   "routes": [
     {
-      "route": "/EcommerceReact/*",
-      "serve": "/EcommerceReact/index.html"
+      "route": "/products/*",
+      "serve": "/static/products"
     }
   ]
 }
